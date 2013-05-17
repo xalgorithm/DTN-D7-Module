@@ -1,0 +1,34 @@
+<?php
+/**
+ * @file
+ * A block module that displays DTN FuturesFeeds.
+ */
+?>
+<?php
+require_once("dtn_includes.inc");
+function dtn_futures_block_info() {
+	$blocks = array();
+	$blocks['dtn_futures'] = array(
+		'info' => t('DTN Futures Block'),
+		'status' => 1,
+	);
+	return $blocks;
+}
+function  dtn_futures_block_view($delta='dtn_futures') {
+	$block=array();
+	// The $delta parameter tells us which block is being requested.
+	switch ($delta) {
+	case 'dtn_futures':
+		$block['subject'] = t('DTN Block Futures');
+		$block['content'] = get_dtn_futures_html();
+	}
+	return $block;
+}
+function get_dtn_futures_html() {
+	$options = array('method' => 'GET',);
+	$init = drupal_http_request('http://api.aghost.net/api/futures/index.cfm?Username=xxxxx&Password=xxxxxx&service=table&noCSS=1', $options);
+	$dtnArray = objectToArray($init);
+	$futures=$dtnArray['data'];
+	return $futures;
+
+}

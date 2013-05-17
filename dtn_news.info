@@ -1,0 +1,8 @@
+name = DTN News Display
+description = DTN  News Display Module.
+core = 7.x
+files[]  = dtn_news.module
+files[]  = dtn_includes.inc
+php = 5.3
+; Configuration link
+configure = admin/structure/dtn

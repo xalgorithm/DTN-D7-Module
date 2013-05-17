@@ -1,0 +1,31 @@
+<?php
+/**
+ * @file
+ * A block module that displays DTN Feeds.
+ */
+?>
+<?php
+function dtn_wx_block_info() {
+  $blocks['dtn_wx'] = array(
+    'info' => t('DTN Weather Block'),
+    'status' => 1,
+  );
+
+function  dtn_wx_block_view($delta='dtn_wx') {
+	switch ($delta) {
+    case 'dtn_wx':
+      $block['subject'] = t('DTN Block Weather');
+      $block['content'] = get_dtn_wx_html();
+    break;
+  }
+}
+function get_dtn_wx_html() {
+	$options =  array('method' => 'GET',);
+	$initWX = drupal_http_request('http://agwx.dtn.com/xmlwx/processwxtag.cfm?Username=xxx&Password=xxxx&service=table&noCSS=1', $options);
+	$dtnWXArray = objectToArray($initWX);
+	$wx = $dtnWXArray['data'];
+	echo $wx;
+		echo "test";
+}
+?>
+

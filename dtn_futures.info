@@ -1,0 +1,8 @@
+name = DTN Futures Display
+description = DTN  Futures Display Module.
+core = 7.x
+files[]  = dtn_futures.module
+files[]  = dtn_includes.inc
+php = 5.3
+; Configuration link
+configure = admin/structure/dtn
