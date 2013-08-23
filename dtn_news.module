@@ -86,18 +86,7 @@ function dtn_news_form($form, &$form_state){
 	);
 	return $system_settings_form($form);
 }
-/*
 
-function get_dtn_news_html() {
-
-	$options = array('method' => 'GET',);
-	$initNews = drupal_http_request('http://agquote.dtn.com/news/processdtnagnewstagv3.cfm?Username=E020520302&Password=c0nt3ntNCG&service=table&noCSS=1', $options);
-	$dtnNewsArray = objectToArray($initNews);
-	$news = $dtnNewsArray['data'];
-	return $news;
-
-}
-*/
 function get_values($url) {
 //setup the array of values,drupal likes arrays.
 	$news_string = array (
